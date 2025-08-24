@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="videoTitle">Video Player - YoruHentai</title>
+    <meta name="description" content="Reproduce videos anime premium en la mejor calidad disponible.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://rogddqelmxyuvhpjvxbf.supabase.co/storage/v1/object/public/files/c86timqkly4.jpg">
+    <meta property="og:image" content="https://rogddqelmxyuvhpjvxbf.supabase.co/storage/v1/object/public/files/0ocduofzkhoi.png">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <h1 class="logo-text" onclick="goHome()">YoruHentai</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <!-- Back Button -->
+                <div class="back-nav">
+                    <button class="back-button" onclick="goHome()">
+                        <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                        Volver al inicio
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div class="player-loading" id="playerLoading">
+                    <div class="loading-card large"></div>
+                </div>
+
+                <!-- Video Player Container -->
+                <div class="video-container" id="videoContainer" style="display: none;">
+                    <div class="video-player">
+                        <iframe id="videoFrame" class="video-iframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="video-info">
+                        <h1 class="video-title" id="currentVideoTitle"></h1>
+                        <div class="video-meta">
+                            <div class="video-date">
+                                <span>Publicado: <span id="videoDate"></span></span>
+                            </div>
+                            <div class="video-actions">
+                                <button class="action-button favorite">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-button share" onclick="shareVideo()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="m8 3 4 8 5-5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Videos -->
+                <section class="related-section" id="relatedSection" style="display: none;">
+                    <h3 class="section-title">Videos Relacionados</h3>
+                    <div class="related-grid" id="relatedGrid"></div>
+                </section>
+
+                <!-- Error State -->
+                <div class="error-state" id="playerError" style="display: none;">
+                    <div class="error-content">
+                        <div class="error-message">Video no encontrado</div>
+                        <button class="retry-button" onclick="goHome()">Volver al inicio</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
