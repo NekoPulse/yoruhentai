@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nezukomi - Creadora de Plataforma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-primary: hsl(0, 0%, 3.9%);
+            --dark-secondary: hsl(0, 0%, 10.2%);
+            --pink-primary: hsl(340, 82.4%, 52.4%);
+            --purple-primary: hsl(291, 64%, 42.4%);
+            --hover-pink: hsl(340, 100%, 55.7%);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --gradient-primary: linear-gradient(135deg, var(--pink-primary), var(--purple-primary));
+            --yellow-patreon: #ff424d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            text-align: center;
+            background: var(--dark-secondary);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: shimmer 4s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            background: var(--gradient-primary);
+            padding: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--dark-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .profile-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .patreon-button {
+            background: linear-gradient(135deg, #ff424d, #ff6b35);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(255, 66, 77, 0.3);
+        }
+
+        .patreon-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 66, 77, 0.4);
+            background: linear-gradient(135deg, #ff6b35, #ff424d);
+        }
+
+        .patreon-button:active {
+            transform: translateY(-1px);
+        }
+
+        .patreon-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .floating-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--pink-primary);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+
+        @media (max-width: 640px) {
+            .profile-container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .patreon-button {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="profile-image">
+            <div style="width: 100%; height: 100%; border-radius: 50%; background: var(--dark-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                🌸
+            </div>
+        </div>
+        
+        <p class="profile-text">
+            Hola, soy <span class="highlight">Nezukomi</span>, la creadora de esta plataforma para amantes del anime explícito. 
+            Soy una desarrolladora que creó tanto la plataforma como la API junto con mi pareja alias 
+            <span class="highlight">DeltaByte</span>. Espero que disfruten de esta plataforma y no olviden seguirme en Patreon.
+        </p>
+        
+        <a href="https://patreon.com/Nezukomi" class="patreon-button" target="_blank" rel="noopener noreferrer">
+            <svg class="patreon-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.623 8.641 8.623 4.75 0 8.615-3.868 8.615-8.623C24 4.36 20.136.48 15.385.48z"/>
+            </svg>
+            Sígueme en Patreon
+        </a>
+    </div>
+
+    <script>
+        // Añadir efectos de interactividad adicionales
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImage = document.querySelector('.profile-image');
+            const container = document.querySelector('.profile-container');
+            
+            // Efecto de seguimiento del mouse
+            container.addEventListener('mousemove', function(e) {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            container.addEventListener('mouseleave', function() {
+                container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+            
+            // Efecto de click en el botón
+            const patreonButton = document.querySelector('.patreon-button');
+            patreonButton.addEventListener('click', function(e) {
+                // Crear efecto de ondas
+                const ripple = document.createElement('span');
+                const rect = patreonButton.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                patreonButton.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+            
+            // CSS para la animación del ripple
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+                .patreon-button {
+                    position: relative;
+                    overflow: hidden;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
