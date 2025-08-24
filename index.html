@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoruHentai - Premium Anime Content</title>
+    <meta name="description" content="Descubre la mejor colección de contenido anime premium con la mayor calidad y variedad.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://rogddqelmxyuvhpjvxbf.supabase.co/storage/v1/object/public/files/c86timqkly4.jpg">
+    <meta property="og:image" content="https://rogddqelmxyuvhpjvxbf.supabase.co/storage/v1/object/public/files/0ocduofzkhoi.png">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <h1 class="logo-text" onclick="goHome()">YoruHentai</h1>
+                    </div>
+                    <nav class="nav-menu">
+                        <a href="#" class="nav-link active">Inicio</a>
+                        <a href="developer/index.html" class="nav-link">Creadora</a>
+                        <a href="https://yoruhentai-api.vercel.app/api" class="nav-link">API</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Premium Anime Content</h2>
+                        <p class="hero-subtitle">Descubre la mejor colección de contenido anime premium</p>
+                        <button class="hero-button" onclick="scrollToVideos()">Explorar Ahora</button>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section class="content" id="videos-section">
+                    <div class="content-header">
+                        <h3 class="content-title">Contenido Destacado</h3>
+                        <div class="sort-controls">
+                            <span class="sort-label">Ordenar por:</span>
+                            <select class="sort-select" id="sortSelect">
+                                <option value="recent">Más reciente</option>
+                                <option value="popular">Más popular</option>
+                                <option value="rated">Mejor valorado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-grid" id="loadingGrid">
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                        <div class="loading-card"></div>
+                    </div>
+
+                    <!-- Videos Grid -->
+                    <div class="videos-grid" id="videosGrid" style="display: none;"></div>
+
+                    <!-- Error State -->
+                    <div class="error-state" id="errorState" style="display: none;">
+                        <div class="error-content">
+                            <div class="error-message">Error al cargar los videos</div>
+                            <button class="retry-button" onclick="loadVideos()">Intentar de nuevo</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
